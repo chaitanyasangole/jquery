@@ -1,0 +1,146 @@
+<html>
+	<head>
+	<script src="jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){		
+			var eflag,email,username,uflag;
+			alert("Inside ready method");
+			$('#info').hide();
+			$('form').submit(function(event){
+				event.preventDefault();
+				if(eflag==1||uflag==1)
+				{
+					$('#info').show();
+					$('#info').fadeOut(2000);
+				}
+				else
+				{
+				var name=$('#name').val();
+				var cs=$('#cs').val();
+				var bd=$('#bd').val();
+				var values='name='+name+"&cs="+cs+"&bd="+bd;
+					$.ajax
+					({
+						url:'../formdata.php',
+						type:'post',
+						data:values,
+						success:function(success)
+						{
+						console.log(success)	;
+						console.log('form submitted');
+						},
+						error:function(xhr,status,error)
+						{
+						console.log(error);
+						}
+					});
+				}
+			});
+			
+			$('#cs').blur(function()
+			{
+				username="username="+$('#cs').val();
+				$.ajax({
+				url:'../response.php',
+				type:'post',
+				data:username,
+				beforeSend:function()
+				{
+				},
+				success:function(success)
+				{
+					console.log(success);
+					if(success=="success")
+					{
+						console.log("record found");
+						uflag=1;
+						if(uflag==1)
+						{
+						console.log("inside if eflag");
+						$('#danger1').show();
+						//$('#danger').fadeOut(4000);
+						}
+						else
+						{
+						
+						}
+					}
+					else
+					{
+						console.log("record not found");
+						$('#danger1').hide();
+						uflag=0;
+					}
+				},
+				error:function(xhr,status,error)
+				{
+					console.log(error);
+				}
+				})
+			});
+			
+			$('#bd').blur(function()
+			{
+			email="email="+$('#bd').val();
+				$.ajax(
+				{
+				url:'../response.php',
+				type:'post',
+				data:email,
+				beforeSend:function()
+				{
+					console.log('stopping the request');
+					if($('#bd').val()=="")
+					{
+						console.log("email is empty");
+						return false;
+					}
+				},
+				success:function(success)
+				{
+					console.log(success);
+					if(success=="success")
+					{
+						console.log("record found");
+						eflag=1;
+						if(eflag==1)
+						{
+						console.log("inside if eflag");
+						$('#danger').show();
+						//$('#danger').fadeOut(4000);
+						}
+						else
+						{
+						}
+					}
+					else
+					{
+						console.log("record not found");
+						$('#danger').hide();
+						eflag=0;
+					}
+				},
+				error:function(xhr,status,error)
+				{
+					console.log(error);
+				}
+			});
+
+			});
+		});
+	</script>
+	</head>
+	<form >
+	<label>Name</label>
+	<input type="text" name="name" id="name">
+	
+	<div id="danger1" style="display:none;">Username already exist.</div>
+	<label>username</label>
+	<input type="text" name="cs" id="cs">
+	<div id="danger" style="display:none;">Email already exist.</div>
+	<label>Email</label>
+	<input type="email" name="bd" id="bd">
+	<input type="submit">
+	<div id="info">Form cannot submit remove the alerts.</div>
+	</form>
+</html>
