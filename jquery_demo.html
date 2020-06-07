@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <script src="jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        alert("Hello");
+        $("input").click(function () {
+          var val = $(this).val();
+          if (val == "Show") {
+            $(this).val("Hide");
+            $("p").show();
+          } else {
+            $(this).val("Show");
+            $("p").hide();
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <input type="button" value="Hide" />
+    <p>This is a paragraph 1!</p>
+    <br />
+    <p>This is a paragraph 2!</p>
+    <br />
+    <p>This is a paragraph 3!</p>
+    <br />
+    <p>This is a paragraph 4!</p>
+    <br />
+    <p>This is a paragraph 5!</p>
+    <br />
+  </body>
+</html>

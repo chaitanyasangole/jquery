@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <script src="jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("form").submit(function (e) {
+          e.preventDefault();
+          console.log($("form").serialize());
+          $("div").text($("form").serialize());
+          //location.reload();
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <form action="" method="post">
+      <center>
+        <table border="1">
+          <tr>
+            <td colspan="2">
+              <center><h1>Serialize Demo</h1></center>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="name">Name</label>
+            </td>
+            <td>
+              <input type="text" name="name" id="name" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="dob">DOB</label>
+            </td>
+            <td>
+              <input type="date" name="dob" id="dob" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Gender:
+            </td>
+            <td>
+              <label for="male">Male</label>
+              <input type="radio" name="gender" value="male" id="male" />
+              <label for="female">Female</label>
+              <input type="radio" name="gender" value="female" id="female" />
+              <label for="other">Other</label>
+              <input type="radio" name="gender" value="other" id="other" />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <center><button>Send</button></center>
+            </td>
+          </tr>
+        </table>
+      </center>
+    </form>
+    <div></div>
+  </body>
+</html>

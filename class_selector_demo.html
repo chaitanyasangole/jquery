@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <script src="jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("button").click(function () {
+          $(".validate").each(function () {
+            var val = $(this).val();
+            if (val == "") {
+              var name = $(this).attr("name");
+              alert(name + " is empty");
+            }
+          });
+        });
+      });
+    </script>
+  </head>
+  <body bgcolor="cyan">
+    <br />
+    <br />
+    <br />
+    <center>
+      <table border="1" bgcolor="white">
+        <thead>
+          <th colspan="2"><h1>Register Form</h1></th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <label for="name">Name</label>
+            </td>
+            <td>
+              <input type="text" class="validate" name="name" id="name" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="dob">DOB</label>
+            </td>
+            <td>
+              <input type="date" class="validate" name="dob" id="dob" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="email">Email</label>
+            </td>
+            <td>
+              <input type="email" class="validate" name="email" id="email" />
+            </td>
+          </tr>
+          <tr></tr>
+          <tr>
+            <td colspan="2">
+              <center><button type="button">Submit</button></center>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </center>
+  </body>
+</html>

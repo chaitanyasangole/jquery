@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <script src="jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("button").click(function () {
+          var val = $("#name").val();
+          if (val == "") {
+            alert("Please, Enter Name");
+            return false;
+          } else {
+            str = "Your name is " + val;
+            $("div").text(str);
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <input type="text" id="name" />
+    <button type="button">Submit</button>
+    <div></div>
+  </body>
+</html>

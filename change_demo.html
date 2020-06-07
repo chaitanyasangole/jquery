@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <script src="jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#city").change(function () {
+          alert("You have selected " + $(this).val());
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <select id="city">
+      <option>Select City</option>
+      <option>Pune</option>
+      <option>Beed</option>
+      <option>Aurangabad</option>
+      <option>Ahmednagar</option>
+      <option>Selu</option>
+    </select>
+  </body>
+</html>
